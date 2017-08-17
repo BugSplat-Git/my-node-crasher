@@ -13,6 +13,7 @@ bugsplat.setDescription("description");
 bugsplat.addAdditionalFile("./additionalFile.txt");
 bugsplat.setCallback((error, responseBody) => {
     console.log("BugSplat callback!");
+    process.exit(1);
 });
 
 // Send an Error to BugSplat manually

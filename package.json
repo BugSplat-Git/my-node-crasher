@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "author": "@bobbyg603",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BugSplat-Git/my-node-crasher.git"
+  },
   "license": "MIT",
   "dependencies": {
     "bugsplat": "^2.0.0"

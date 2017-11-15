@@ -11,7 +11,7 @@ bugsplat.setUser("Fred");
 bugsplat.setEmail("fred@bedrock.com");
 bugsplat.setDescription("description");
 bugsplat.addAdditionalFile("./additionalFile.txt");
-bugsplat.setCallback((error, responseBody) => {
+bugsplat.setCallback((requestError, responseBody, originalError) => {
     // We recommend exiting your process and using a package like pm2 to handle restarts
     process.exit(1);
 });

@@ -6,22 +6,28 @@
 const bugsplat = require("bugsplat")("fred", "my-node-crasher", "1.0.0.0");
 
 // The following optional api methods allow further customization
-bugsplat.setAppKey("AppKey");
-bugsplat.setUser("Fred");
-bugsplat.setEmail("fred@bedrock.com");
-bugsplat.setDescription("description");
+bugsplat.setDefaultAppKey("AppKey");
+bugsplat.setDefaultUser("Fred");
+bugsplat.setDefaultEmail("fred@bedrock.com");
+bugsplat.setDefaultDescription("description");
 bugsplat.addAdditionalFile("./additionalFile.txt");
-bugsplat.setCallback((requestError, responseBody, originalError) => {
-    // We recommend exiting your process and using a package like pm2 to handle restarts
-    process.exit(1);
-});
 
 // Send an Error to BugSplat manually
-// bugsplat.post(new Error("foobar!"));
+// bugsplat.post(new Error("foobar!"), {
+//     appKey: "NewAppKey",
+//     user: "Barney",
+//     email: "barney@bedrock.com",
+//     description: "new description"
+// }, (requestError, responseBody, originalError) => {
+//     // requestError will be null or an error object that was thrown while attempting to post to BugSplat
+//     // responseBody from BugSplat that contains the crashId
+//     // originalError contains the error that was passed to bugsplat.post
+//     process.exit(1);
+// });
 
 // Post to BugSplat when unhandledRejections and uncaughtExceptions occur
-process.on("unhandledRejection", bugsplat.post);
-process.on("uncaughtException", bugsplat.post);
+process.on("unhandledRejection", bugsplat.postAndExit);
+process.on("uncaughtException", bugsplat.postAndExit);
 
 // Trigger an uncaughtException or unhandledRejection to test BugSplat
 uncaughtException();

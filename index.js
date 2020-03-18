@@ -2,32 +2,33 @@
 // https://www.npmjs.com/package/bugsplat
 // support@bugsplat.com
 
-// Required - initialize bugsplat with database name, app name, and version
+// Required: Initialize bugsplat with database name, app name, and version
 const bugsplat = require("bugsplat")("fred", "my-node-crasher", "1.0.0.0");
 
-// The following optional api methods allow further customization
+// Recommended: Functions that allow further customization
 bugsplat.setDefaultAppKey("AppKey");
 bugsplat.setDefaultUser("Fred");
 bugsplat.setDefaultEmail("fred@bedrock.com");
 bugsplat.setDefaultDescription("description");
-bugsplat.addAdditionalFile("./additionalFile.txt");
+bugsplat.setDefaultAdditionalFilePaths(["./additionalFile.txt"]);
 
-// Send an Error to BugSplat manually
+// Recommended: Post to BugSplat when unhandledRejections and uncaughtExceptions occur
+process.on("uncaughtException", async (error) => await bugsplat.postAndExit(error));
+process.on("unhandledRejection", async (error) => await bugsplat.postAndExit(error));
+
+// Optional: Send an Error to BugSplat manually
 // bugsplat.post(new Error("foobar!"), {
 //     appKey: "NewAppKey",
 //     user: "Barney",
 //     email: "barney@bedrock.com",
-//     description: "new description"
-// }, (requestError, responseBody, originalError) => {
-//     // requestError will be null or an error object that was thrown while attempting to post to BugSplat
-//     // responseBody from BugSplat that contains the crashId
-//     // originalError contains the error that was passed to bugsplat.post
+//     description: "new description",
+//     additionalFilePaths: ["./additionalFile2.txt"]
+// }).then(({ error, response, original }) => {
+//     // error will be null or an error object that was thrown while attempting to post to BugSplat
+//     // response is the response from posting the crash to the BugSplat API 
+//     // original contains the error that was passed to bugsplat.post
 //     process.exit(1);
 // });
-
-// Post to BugSplat when unhandledRejections and uncaughtExceptions occur
-process.on("unhandledRejection", bugsplat.postAndExit);
-process.on("uncaughtException", bugsplat.postAndExit);
 
 // Trigger an uncaughtException or unhandledRejection to test BugSplat
 uncaughtException();

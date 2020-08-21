@@ -1,6 +1,6 @@
 [![BugSplat](https://s3.amazonaws.com/bugsplat-public/npm/header.png)](https://www.bugsplat.com)
 ## my-node-crasher
-This repo is an example of how to use BugSplat's [npm package](https://www.npmjs.com/package/bugsplat) in a Node.js application.
+This repo is an example of how to use BugSplat's [npm package](https://www.npmjs.com/package/bugsplat-node) in a Node.js application.
 1. Clone this repository or download the zip from the releases tab
 2. Open terminal or command prompt in this project's root directory
 3. ```npm install && npm run start```
@@ -8,7 +8,7 @@ This repo is an example of how to use BugSplat's [npm package](https://www.npmjs
 5. When prompted to log in, use the username "Fred@bugsplat.com" and password "Flintstone"
 6. Click the ID of your crash to see crash details
 
-For additional help, check out the [documentation](http://www.bugsplat.com/documents/) on our website or email support(at)bugsplat.com if you have any questions.
+For additional help, check out the [documentation](http://www.bugsplat.com/docs/) on our website or email support(at)bugsplat.com if you have any questions.
 
 Good luck!
 © BugSplat Software

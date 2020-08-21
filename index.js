@@ -3,7 +3,8 @@
 // support@bugsplat.com
 
 // Required: Initialize bugsplat with database name, app name, and version
-const bugsplat = require("bugsplat")("fred", "my-node-crasher", "1.0.0.0");
+const BugSplat = require("bugsplat-node");
+const bugsplat = new BugSplat("bobby_bugsplat_com", "my-node-crasher", "1.0.0.0");
 
 // Recommended: Functions that allow further customization
 bugsplat.setDefaultAppKey("AppKey");

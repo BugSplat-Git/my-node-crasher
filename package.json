@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "native": "node native.js"
   },
   "author": "@bobbyg603",
   "homepage": "https://www.bugsplat.com",
@@ -15,6 +16,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bugsplat": "^7.0.0",
     "bugsplat-node": "^1.0.0"
   }
 }

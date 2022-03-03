@@ -16,6 +16,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bugsplat-node": "^1.1.1"
+    "bugsplat-node": "^2.0.1"
   }
 }

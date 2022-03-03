@@ -3,8 +3,8 @@
 // support@bugsplat.com
 
 // Required: Initialize bugsplat with database name, app name, and version
-const BugSplat = require("bugsplat-node");
-const bugsplat = new BugSplat("fred", "my-node-crasher", "1.0.0.0");
+const { BugSplatNode } = require("bugsplat-node");
+const bugsplat = new BugSplatNode("fred", "my-node-crasher", "1.0.0.0");
 
 // Recommended: Functions that allow further customization
 bugsplat.setDefaultAppKey("AppKey");
@@ -36,11 +36,31 @@ uncaughtException();
 //unhandledRejection();
 
 function uncaughtException() {
-    throw new Error("foobar!");
+    generateStackFramesAndCrash();
 }
 
 function unhandledRejection() {
     return new Promise((resolve, reject) => resolve("foo"))
         .then(foo => new Promise((resolve, reject) => resolve(foo + "bar!")))
         .then(foobar => new Promise((resolve, reject) => reject(new Error(foobar))));
+}
+
+function generateStackFramesAndCrash() {
+    stackFrame0();
+}
+
+function stackFrame0() {
+    stackFrame1();
+}
+
+function stackFrame1() {
+    stackFrame2();
+}
+
+function stackFrame2() {
+    crash();
+}
+
+function crash() {
+    throw new Error("foobar!");
 }

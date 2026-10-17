@@ -1,3 +1,5 @@
+> **This sample has moved to [bugsplat-js/examples/my-node-crasher](https://github.com/BugSplat-Git/bugsplat-js/tree/master/examples/my-node-crasher).** This repository is archived and kept for history.
+
 [![BugSplat](https://s3.amazonaws.com/bugsplat-public/npm/header.png)](https://www.bugsplat.com)
 
 ## my-node-crasher

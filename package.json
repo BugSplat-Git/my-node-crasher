@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "start:with-cause": "node index.js --with-cause",
     "native": "node native.js"
   },
   "author": "@bobbyg603",
@@ -16,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bugsplat-node": "^2.0.1"
+    "bugsplat": "^9.2.0",
+    "bugsplat-node": "^4.0.0"
   }
 }

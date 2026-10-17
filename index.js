@@ -32,7 +32,12 @@ process.on("unhandledRejection", async (error) => await bugsplat.postAndExit(err
 // });
 
 // Trigger an uncaughtException or unhandledRejection to test BugSplat
-uncaughtException();
+// Pass --with-cause (npm run start:with-cause) to throw an Error that has a cause
+if (process.argv.includes("--with-cause")) {
+    crashWithCause();
+} else {
+    uncaughtException();
+}
 //unhandledRejection();
 
 function uncaughtException() {
@@ -43,6 +48,18 @@ function unhandledRejection() {
     return new Promise((resolve, reject) => resolve("foo"))
         .then(foo => new Promise((resolve, reject) => resolve(foo + "bar!")))
         .then(foobar => new Promise((resolve, reject) => reject(new Error(foobar))));
+}
+
+function crashWithCause() {
+    loadUserSettings();
+}
+
+function loadUserSettings() {
+    try {
+        JSON.parse("{ not valid json");
+    } catch (error) {
+        throw new Error("Failed to load user settings", { cause: error });
+    }
 }
 
 function generateStackFramesAndCrash() {
